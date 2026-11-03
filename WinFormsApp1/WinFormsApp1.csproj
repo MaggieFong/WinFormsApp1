@@ -6,14 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Designer.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Designer.png" />
+    <!-- 手部影像內嵌於執行檔，不需另外複製檔案 -->
+    <EmbeddedResource Include="Assets\hand.png" LogicalName="RobotHandDemo.Assets.hand.png" />
   </ItemGroup>
 
 </Project>
