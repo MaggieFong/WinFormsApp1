@@ -9,9 +9,4 @@
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
   </PropertyGroup>
 
-  <ItemGroup>
-    <!-- 手部影像內嵌於執行檔，不需另外複製檔案 -->
-    <EmbeddedResource Include="Assets\hand.png" LogicalName="RobotHandDemo.Assets.hand.png" />
-  </ItemGroup>
-
 </Project>

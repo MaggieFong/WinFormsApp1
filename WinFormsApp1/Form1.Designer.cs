@@ -11,7 +11,6 @@
                 components?.Dispose();
                 _animTimer?.Dispose();
                 _clockTimer?.Dispose();
-                _handImage?.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -44,7 +44,6 @@ namespace RobotHandDemo
         private readonly Label[] _valueLabels = new Label[5];
         private readonly FlatButton[] _presetButtons = new FlatButton[Gestures.Length];
         private ListBox _log = null!;
-        private Image? _handImage;
 
         // ── 手勢過渡動畫 ─────────────────────────────────────
         private System.Windows.Forms.Timer? _animTimer;
@@ -61,7 +60,6 @@ namespace RobotHandDemo
             Font = Theme.Body;
             BackColor = Theme.Page;
 
-            _handImage = LoadHandImage();
             BuildLayout();
 
             _animTimer = new System.Windows.Forms.Timer { Interval = 15 };
@@ -123,7 +121,7 @@ namespace RobotHandDemo
                 Padding = new Padding(1, CardPanel.HeaderHeight + 1, 1, 1),
             };
 
-            _hand = new HandView { Dock = DockStyle.Fill, Image = _handImage };
+            _hand = new HandView { Dock = DockStyle.Fill };
             _hand.TouchToggled += Hand_TouchToggled;
 
             _touchStrip = new Panel { Dock = DockStyle.Bottom, Height = 60, BackColor = Theme.Card, Padding = new Padding(0, 12, 16, 12) };
@@ -454,18 +452,6 @@ namespace RobotHandDemo
 
             using (var pen = new Pen(Color.FromArgb(240, 243, 247)))
                 g.DrawLine(pen, e.Bounds.Left, e.Bounds.Bottom - 1, e.Bounds.Right, e.Bounds.Bottom - 1);
-        }
-
-        // ═════════════════════════════════════════════════════
-        //  資源
-        // ═════════════════════════════════════════════════════
-        /// <summary>從內嵌資源載入手部影像（不再依賴 D:\ 絕對路徑）。</summary>
-        private static Image? LoadHandImage()
-        {
-            using var stream = typeof(FormHandDemo).Assembly.GetManifestResourceStream("RobotHandDemo.Assets.hand.png");
-            if (stream == null) return null;
-            using var temp = Image.FromStream(stream);
-            return new Bitmap(temp);
         }
     }
 }
